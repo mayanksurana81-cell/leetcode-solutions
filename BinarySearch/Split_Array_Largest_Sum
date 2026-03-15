@@ -1,0 +1,45 @@
+/*
+Category: Array (Primary), Binary Search on Answer (Secondary)
+
+Approach:
+Binary search the minimum possible largest subarray sum.
+For a candidate sum (mid), greedily split the array while
+keeping each subarray sum ≤ mid. If more than k subarrays
+are needed, increase the limit; otherwise try a smaller one.
+
+Time Complexity: O(n log S)
+Space Complexity: O(1)
+
+Where n = number of elements,
+      S = sum of all elements.
+*/
+class Solution {
+public:
+bool verify(vector<int>& nums, int checksum,int k){
+    int subarray_count = 1;
+    int sum = 0;
+    for(int i = 0 ; i<nums.size() ; i++){
+        if(sum + nums[i] <= checksum) sum += nums[i];
+        else{
+            subarray_count++;
+            if(subarray_count > k) return false;
+            sum = nums[i];
+        }
+    }
+    return true;
+}
+    int splitArray(vector<int>& nums, int k) {
+        int n = nums.size();
+        int maxele = *max_element(nums.begin() , nums.end());
+        int maxsum = 0;
+        for(int ele : nums) maxsum += ele;
+        int i = maxele , j = maxsum;
+        while(i<=j){
+            int mid = i + (j-i)/2;
+            bool check = verify(nums , mid , k);
+            if(check == true) j = mid - 1;
+            else i = mid+1;
+        }
+        return i;
+    }
+};
