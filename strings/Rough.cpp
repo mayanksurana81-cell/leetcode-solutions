@@ -1,18 +1,32 @@
 #include<iostream>
+#include<vector>
 using namespace std;
-int main(){
-    int n;
-    cout<<"Enter n : ";
-    cin>>n;
-    int num = 1;
-    for(int i = 1 ; i<=n ; i++){
-        for(int j = 1 ; j<=i; j++){
-            cout<<"*";
-        }
-            for(int s = 1 ; s<=2*(n-i); s++) cout<<" ";
-                for(int j = 0 ; j<i ; j++) cout<<"*";
-            cout<<endl;
+
+ int search(vector<int>& nums, int target) {
+        int n = nums.size();
+        int i = 0 , j = n-1;
+        while(i<=j){
+            int mid = i + (j-i)/2;
+            if(nums[mid] == target) return mid;
+            if(nums[i] <= nums[mid]){
+                if(nums[i] <= target && nums[mid] >= target){
+                    j = mid-1;
+                }
+                else i = mid + 1;
+            }
+            else{
+                if(nums[mid] <= target && nums[j] >= target){
+                    i = mid+1;
+                }
+                else j = mid - 1;
+            }
+        
+        
     }
+    return -1;
+}
+int main(){
+    vector<int> v = {4,5,0,1,4,4,4,4,4};
+    cout<<search(v , 0);
     
-   
 }
