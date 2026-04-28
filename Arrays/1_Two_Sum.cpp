@@ -12,7 +12,7 @@ public:
             int d = target - nums[i];
             if(mp.count(d)) return{mp[d] , i};
             mp[nums[i]] = i;
-        }
+        }gv
         return {-1 , - 1};
     }
 };
