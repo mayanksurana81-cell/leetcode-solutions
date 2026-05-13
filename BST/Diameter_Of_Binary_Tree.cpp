@@ -3,8 +3,8 @@ Category: Binary Tree / DFS
 Approach:
 For every node, compute height of left and right subtrees and use their sum as diameter passing through that node.
 Recursively evaluate all nodes while maintaining the maximum diameter found globally.
-Time Complexity: O(n^2)
-Space Complexity: O(h)
+Time Complexity: O(n^2);
+Space Complexity: O(h);
 Where h is height of tree due to recursion stack and heights are recomputed repeatedly
 */
 
