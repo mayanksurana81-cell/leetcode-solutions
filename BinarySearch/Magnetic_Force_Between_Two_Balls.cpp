@@ -14,11 +14,6 @@ Approach:
 Time Complexity: O(n log(maxDistance))
 Space Complexity: O(1)
 
-Extra Clarification:
-- Your greedy feasibility logic is correct.
-- There is one logical mistake in the binary search call:
-  isPossible(position , mid , n)
-  should use m instead of n.
  */
 class Solution {
 public:
@@ -41,7 +36,7 @@ public:
         int ans = s;
         while(s<=e){
             int mid = s + (e-s)/2;
-            if(isPossible(position , mid , n)){
+            if(isPossible(position , mid , m)){
                 ans = mid;
                 s = mid + 1;
             }
