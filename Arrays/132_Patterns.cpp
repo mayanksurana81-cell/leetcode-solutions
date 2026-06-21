@@ -9,7 +9,7 @@ Approach:
   - If it is smaller than third, a valid 132 pattern exists.
   - Otherwise, pop all smaller elements from the stack and update third,
     since they can serve as the middle value of the pattern.
-- Push the current element onto the stack as a future candidate for '3'.
+- Push the current element onto the stack as a future candidate for '3'
 - If no valid configuration is found, return false.
 
 Time Complexity: O(n)
