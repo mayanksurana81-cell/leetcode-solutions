@@ -1,27 +1,19 @@
 #include<iostream>
 #include<vector>
 using namespace std;
-void insertion_sort(vector<int>& arr){
-    int n = arr.size();
-    for(int i = 0; i < n; i++){
-        int j = i;
-        while(j > 0 && arr[j] < arr[j - 1]){
-            int temp = arr[j];
-            arr[j] = arr[j - 1];
-            arr[j - 1] = temp;
-            j--;
-        }
+void helper(int arr[], int n, int idx, vector<int>& v){
+    if(idx >= n){
+        for(int ele : v) cout<<ele<<" ";
+        cout<<endl;
+        return;
     }
-    
+    v.push_back(arr[idx]);
+    helper(arr, n, idx + 1, v);
+    v.pop_back();
+    helper(arr,n,idx+1,v);    
 }
 int main(){
-    vector<int> arr = {5,2,3,1,-9,58,-89,-45,20,10};
-    for(int i = 0; i < arr.size(); i++){
-        cout << arr[i] << " ";
-    }
-    cout<<endl;
-    insertion_sort(arr);
-    for(int i = 0; i < arr.size(); i++){
-        cout << arr[i] << " ";
-    }
+    int arr[5] = {1, 2, 3};
+    vector<int> v;
+    helper(arr, 3, 0, v);
 }
