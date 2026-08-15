@@ -1,3 +1,16 @@
+/*
+Category: Array, Sorting, Greedy
+
+Approach:
+- Sort the intervals by their starting points.
+- Keep track of the current interval using curr_start and curr_end.
+- If the next interval overlaps with the current interval, extend curr_end to the larger ending point.
+- If there is no overlap, store the current interval and start processing the next one.
+- Add the final interval after completing the traversal.
+
+Time Complexity: O(n log n)
+Space Complexity: O(n)
+*/
 class Solution {
 public:
     vector<vector<int>> merge(vector<vector<int>>& nums) {
